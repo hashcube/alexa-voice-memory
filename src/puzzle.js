@@ -82,23 +82,42 @@ function verifyPuzzle(alexa_input, user_input) {
     case "numbers":
     case "alphabet": 
       ans = alexa_input.puzzle.sort();
-      if(alexa_input.variation === "decreasing") {
-        ans.reverse();
-      }
-      if (_.isEqual(ans, user_input)) {
-        return {
-          "speak": praise[getRandomInt(1, praise.length)],
-          "correct": true
-        };
-      } else {
-        return {
-          "speak": lose[getRandomInt(1, lose.length)],
-          "correct": false 
-        };
-      }
      case "equations":
-       //TODO
-       break;
+      check(ans, user_input);
+     /*
+       _.each(alexa_input.puzzle, function(val) {
+         _.each(val, function(v) {
+           if(v === "+") {
+             sum = true;
+           }
+           if(v === "-") {
+             subtract = true;
+           }
+         });
+         sum = subtract = false;
+         if
+       });
+       */
+     break;
+   }
+   if(alexa_input.variation === "decreasing") {
+     ans.reverse();
+   }
+   return check(ans, user_input);
+}
+
+function check(ans, user_input) {
+  //console.log(ans, user_input);
+  if (_.isEqual(ans, user_input)) {
+    return {
+      "speak": praise[getRandomInt(0, praise.length - 1)],
+      "correct": true
+     };
+   } else {
+     return {
+       "speak": lose[getRandomInt(0, lose.length - 1)],
+       "correct": false
+     };
    }
 }
 
@@ -107,4 +126,11 @@ console.log(verifyPuzzle({ speed: 2,
  variation: 'decreasing',
   type: 'alphabet',
    puzzle: [ 'n', 'e', 'y', 'q' ] }, ['y', 'q', 'n', 'e']));
-*/
+
+console.log(verifyPuzzle(
+  { speed: 2,
+    variation: 'increasing',
+    type: 'equations',
+    puzzle: [ [ 5, '+', 1 ], [ 9, '-', 5 ], [ 5, '-', 4 ], [ 8, '+', 9 ] ] }),
+    [6, 4, 1, 17]);
+    */
