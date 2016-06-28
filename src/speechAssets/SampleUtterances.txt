@@ -1,0 +1,9 @@
+HelloWorldIntent hello
+HelloWorldIntent say hello world
+HelloWorldIntent hello
+HelloWorldIntent say hi
+HelloWorldIntent say hi world
+HelloWorldIntent hi
+HelloWorldIntent how are you
+GetFirstEventIntent start
+GetNextEventIntent answer is {Answera} {Answerb} {Answerc} {Answerd}

@@ -41,14 +41,14 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function getPuzzle(level) {
+var getPuzzle = function getPuzzle(level) {
 
   var l = Math.ceil(level/10),
     type = level_types[l],
     speed = (level < 10)? level: (level % 10) + 1,
     puzzle = [];
     possible = "abcdefghijklmnopqrstuvwxyz";
- 
+
   switch(type) {
     case "numbers":
       _.times(4, function() {
@@ -73,14 +73,14 @@ function getPuzzle(level) {
       type: type,
       puzzle: puzzle
     }
-}
-
+};
+exports.getPuzzle = getPuzzle;
 function verifyPuzzle(alexa_input, user_input) {
   var ans;
 
   switch(alexa_input.type) {
     case "numbers":
-    case "alphabet": 
+    case "alphabet":
       ans = alexa_input.puzzle.sort();
      case "equations":
       check(ans, user_input);
@@ -120,7 +120,8 @@ function check(ans, user_input) {
      };
    }
 }
-
+//_.each([2, 12, 22], function(i){
+//  console.log(getPuzzle(i));});
 /*
 console.log(verifyPuzzle({ speed: 2,
  variation: 'decreasing',

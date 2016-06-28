@@ -1,0 +1,37 @@
+{
+  "intents": [
+    {
+      "intent": "HelloWorldIntent"
+    },
+    {
+      "intent": "GetFirstEventIntent"
+    },
+    {
+      "intent": "GetNextEventIntent",
+      "slots": [
+           {
+               "name": "Answera",
+               "type": "AMAZON.NUMBER"
+           },
+           {
+               "name": "Answerb",
+               "type": "AMAZON.NUMBER"
+           },
+           {
+               "name": "Answerc",
+               "type": "AMAZON.NUMBER"
+           },
+           {
+               "name": "Answerd",
+               "type": "AMAZON.NUMBER"
+           }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    }
+  ]
+}
